@@ -1,12 +1,21 @@
-.favoritesGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  justify-items: center;
+.favoritesGrid,
+.favoritesCentered {
   gap: 24px;
   padding: 24px;
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
+}
+.favoritesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+}
+
+.favoritesCentered {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .favoritesEmpty {

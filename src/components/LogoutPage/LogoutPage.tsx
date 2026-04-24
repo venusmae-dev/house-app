@@ -9,7 +9,7 @@ const LogoutPage = ({ onLoginAgain }: LogoutPageProps) => {
     <div className={styles.container}>
       <p className={styles.message}>You are logged out.</p>
       <button className={styles.button} onClick={onLoginAgain}>
-        Log in again
+        Log in
       </button>
     </div>
   );

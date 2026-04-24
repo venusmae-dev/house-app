@@ -18,19 +18,7 @@ const FavoritesList = ({ favorites, onFavorite, isFavorited }: FavoritesListProp
   }
 
   return (
-    <div
-      className={styles.favoritesGrid}
-      style={
-        favorites.length < 3
-          ? {
-              display: "flex",
-              justifyContent: "center",
-              flexWrap: "wrap",
-              gap: "24px",
-            }
-          : undefined
-      }
-    >
+    <div className={favorites.length < 3 ? styles.favoritesCentered : styles.favoritesGrid}>
       {favorites.map((house) => (
         <HouseCard
           key={house.id}
