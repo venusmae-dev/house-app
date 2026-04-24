@@ -38,6 +38,7 @@ function App() {
       <div style={{ display: "flex", flex: 1 }} className='app-layout'>
         <Header
           showFavorites={showFavorites}
+          isLoggedOut={isLoggedOut}
           favoritesCount={favorites.length}
           onToggleFavorites={() => setShowFavorites((prev) => !prev)}
           onHandleLogout={handleLogout}

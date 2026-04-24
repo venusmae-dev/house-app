@@ -46,6 +46,9 @@ const HouseList = ({ onFavorite, isFavorited }: HouseListProps) => {
 
     // define fetchPage as an inner function so it can be called recursively for retries without needing to be declared outside the effect or added as a dependency
     const fetchPage = () => {
+      // default of 10 houses per page balances initial load time and scroll smoothness
+      // increasing this value would reduce the number of API calls but slow down the initial render
+      // and increase memory usage due to more images being fetched simultaneously
       getHouses(page)
         .then((data) => {
           fetchedPages.current.add(page);

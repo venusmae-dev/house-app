@@ -4,12 +4,14 @@ import { HeartIcon, ArrowLeftIcon, LogOut, HouseHeart } from "lucide-react";
 interface HeaderProps {
   showFavorites: boolean;
   favoritesCount: number;
+  isLoggedOut?: boolean;
   onToggleFavorites: () => void;
   onHandleLogout: () => void;
 }
 
 const Header = ({
   showFavorites,
+  isLoggedOut,
   favoritesCount,
   onToggleFavorites,
   onHandleLogout,
@@ -23,7 +25,7 @@ const Header = ({
         Haus
       </h1>
       <nav className={styles.headerNav}>
-        {showFavorites ? (
+        {showFavorites && !isLoggedOut ? (
           <button onClick={onToggleFavorites} className={styles.headerLink}>
             <ArrowLeftIcon size={18} />
             Back

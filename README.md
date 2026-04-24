@@ -42,9 +42,11 @@ Open [http://localhost:5173](http://localhost:5173) in your browser.
 ### Other commands
 
 ```bash
-npm run build    # Build for production
-npm run preview  # Preview the production build
-npm run lint     # Run ESLint
+npm run build      # Build for production
+npm run preview    # Preview the production build
+npm run lint       # Run ESLint
+npm test           # Run tests once
+npm run test:watch # Run tests in watch mode
 ```
 
 ## Architecture
@@ -52,3 +54,5 @@ npm run lint     # Run ESLint
 The app fetches paginated house data from an API. Infinite scroll is implemented using the native Intersection Observer API - when the bottom of the list enters the viewport, the next page is fetched and appended. Failed requests retry automatically after 1.5 seconds without losing previously loaded data.
 
 Listings can be favorited and unfavorited. Favorites state is lifted to `App.tsx` and shared between components via props. A state management library was not introduced since the app scope does not require one, though it would be a natural next step as the app grows.
+
+In a production app, React Query (TanStack) would be a strong addition as it would handle caching of fetched pages, automatic retries, and background refetching out of the box. This would be especially valuable if the page size were increased, since cached responses would prevent redundant network requests when navigating between views.
