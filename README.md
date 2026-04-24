@@ -1,13 +1,29 @@
-# House App
+# Haus
 
-A React + TypeScript app for browsing and favoriting house listings.
+A React + TypeScript app for browsing house listings.
+
+## Tech Stack
+
+- React + TypeScript
+- Vite
+- shadcn/ui + Tailwind CSS
+- CSS Modules
+- Native Fetch API
+
+## Features
+
+- Infinite scroll powered by the Intersection Observer API
+- Automatic retry on failed API requests with spinner feedback
+- Favorite and unfavorite listings - persisted in memory during the session
+- Responsive layout - sidebar nav on desktop, top nav on mobile
+- House listings are deduplicated by ID before being appended to the list
 
 ## Getting Started
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org/) (v18 or higher)
-- npm (comes with Node.js)
+- Node.js v18 or higher
+- npm
 
 ### Installation
 
@@ -31,76 +47,8 @@ npm run preview  # Preview the production build
 npm run lint     # Run ESLint
 ```
 
----
+## Architecture
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The app fetches paginated house data from an API. Infinite scroll is implemented using the native Intersection Observer API - when the bottom of the list enters the viewport, the next page is fetched and appended. Failed requests retry automatically after 1.5 seconds without losing previously loaded data.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Listings can be favorited and unfavorited. Favorites state is lifted to `App.tsx` and shared between components via props. A state management library was not introduced since the app scope does not require one, though it would be a natural next step as the app grows.
