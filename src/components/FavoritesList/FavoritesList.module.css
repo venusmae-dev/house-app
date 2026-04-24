@@ -1,0 +1,33 @@
+.favoritesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  gap: 24px;
+  padding: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.favoritesEmpty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  color: #888;
+  font-size: 1rem;
+}
+
+@media (max-width: 1024px) {
+  .favoritesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .favoritesGrid {
+    grid-template-columns: 1fr;
+    padding: 16px;
+    gap: 16px;
+  }
+}
