@@ -1,4 +1,3 @@
-// src/components/FavoritesList/FavoritesList.tsx
 import { House } from "@/api/houses";
 import HouseCard from "@/components/HouseCard/HouseCard";
 import styles from "./FavoritesList.module.css";

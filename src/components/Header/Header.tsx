@@ -5,9 +5,15 @@ interface HeaderProps {
   showFavorites: boolean;
   favoritesCount: number;
   onToggleFavorites: () => void;
+  onHandleLogout: () => void;
 }
 
-const Header = ({ showFavorites, favoritesCount, onToggleFavorites }: HeaderProps) => {
+const Header = ({
+  showFavorites,
+  favoritesCount,
+  onToggleFavorites,
+  onHandleLogout,
+}: HeaderProps) => {
   return (
     <header className={styles.header}>
       <h1 className={styles.headerTitle}>
@@ -37,7 +43,7 @@ const Header = ({ showFavorites, favoritesCount, onToggleFavorites }: HeaderProp
           </button>
         )}
       </nav>
-      <button className={styles.footer}>
+      <button className={styles.footer} onClick={onHandleLogout}>
         <LogOut size={18} style={{ color: "#ffffff" }} />
         Logout
       </button>

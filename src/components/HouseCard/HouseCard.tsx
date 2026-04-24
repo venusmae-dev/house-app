@@ -17,7 +17,6 @@ const HouseCard = ({ house, onFavorite, isFavorited }: HouseCardProps) => {
         </button>
       </div>
       <div className={styles.cardDetails}>
-        <p className={styles.cardPrice}>{house.id}</p>
         <p className={styles.cardPrice}>${house.price.toLocaleString()}</p>
         <p className={styles.homeowner}>Owned by {house.homeowner}</p>
         <p className={styles.address}>{house.address}</p>
