@@ -2,6 +2,7 @@ import { useState } from "react";
 import Header from "@/components/Header/Header";
 import HouseList from "@/components/HouseList/HouseList";
 import FavoritesList from "@/components/FavoritesList/FavoritesList";
+import LogoutPage from "@/components/LogoutPage/LogoutPage";
 import { House } from "@/api/houses";
 import "./App.css";
 
@@ -20,6 +21,14 @@ function App() {
     });
   };
 
+  // for exercise purposes, we're just tracking logout with a boolean in state. In a real app, this would involve more complex logic like clearing auth tokens, redirecting to a login page, etc.
+  const [isLoggedOut, setIsLoggedOut] = useState(false);
+
+  const handleLogout = () => {
+    setIsLoggedOut(true);
+    setShowFavorites(false);
+  };
+
   // defined here and passed down as a prop so the source of truth stays in App
   // HouseCard doesn't need to know about the full favorites array, just whether its own house is favorited
   const isFavorited = (id: number) => favorites.some((h) => h.id === id);
@@ -31,9 +40,12 @@ function App() {
           showFavorites={showFavorites}
           favoritesCount={favorites.length}
           onToggleFavorites={() => setShowFavorites((prev) => !prev)}
+          onHandleLogout={handleLogout}
         />
         <main style={{ flex: 1, overflowY: "auto" }}>
-          {showFavorites ? (
+          {isLoggedOut ? (
+            <LogoutPage onLoginAgain={() => setIsLoggedOut(false)} />
+          ) : showFavorites ? (
             <FavoritesList
               favorites={favorites}
               onFavorite={handleFavorite}
