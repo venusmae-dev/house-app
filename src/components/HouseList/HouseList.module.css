@@ -1,0 +1,24 @@
+.houseGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  gap: 24px;
+  padding: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .houseGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .houseGrid {
+    grid-template-columns: 1fr;
+    padding: 16px;
+    gap: 16px;
+  }
+}
