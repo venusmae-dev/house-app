@@ -1,0 +1,75 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+  justify-items: center;
+  align-items: flex-start;
+  gap: 32px;
+  width: 180px;
+  height: 100vh;
+  padding: 30px 20px;
+  background: #0d0c1d;
+  position: sticky;
+  top: 0;
+}
+
+.headerTitle {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.headerNav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.headerLink,
+.footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: #ffffff;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+  padding: 8px 0;
+  text-align: left;
+}
+
+.headerLink:hover,
+.footer:hover {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .header {
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  .headerNav {
+    flex-direction: row;
+    gap: 16px;
+  }
+
+  .favoritesCount {
+    display: flex;
+    flex-direction: column;
+  }
+}
