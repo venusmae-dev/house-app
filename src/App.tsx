@@ -8,7 +8,7 @@ import "./App.css";
 
 function App() {
   // setting favorites in memory for simplicity, but in a real app, would want to persist via state management or localStorage to avoid losing data on refresh
-  // placing favorites state in App so it can be shared between HouseList and FavoritesList. If we had more complex state or needed to share between more components, would consider using a state management library like Redux
+  // placing favorites state in App so it can be shared between HouseList and FavoritesList. If we had more complex state or needed to share between more components, would consider using a state management library
   const [favorites, setFavorites] = useState<House[]>([]);
   const [showFavorites, setShowFavorites] = useState(false);
 

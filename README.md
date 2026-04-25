@@ -22,7 +22,7 @@ A React + TypeScript app for browsing house listings.
 
 ### Prerequisites
 
-- Node.js v18 or higher
+- Node.js 20.19+ or 22.12+
 - npm
 
 ### Installation
